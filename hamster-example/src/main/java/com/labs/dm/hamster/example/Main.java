@@ -2,10 +2,10 @@ package com.labs.dm.hamster.example;
 
 import com.labs.dm.hamster.example.domain.Person;
 import com.labs.dm.hamster.example.helpers.HibernateUtil;
-import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 /**
  *
@@ -16,15 +16,18 @@ public class Main {
     
     public static void main(String[] args) {
         Session s = sf.openSession();
-        
+        s.getTransaction().begin();
         Person person = new Person("Jack Smith");
-        s.save(person);
-        
+        System.out.println(s.save(person));
+        System.out.println(person.getId());
+        s.getTransaction().commit();
         
         System.out.println(s.getStatistics());
         
         s.close();
         s = sf.openSession();
+
+        s.get(Person.class, person.getId());
         
         List<Person> list = s.createQuery("from Person").list();
         System.out.println(list.size());

@@ -10,13 +10,13 @@
         <property name="connection.username">sa</property>
         <property name="connection.password">sa</property>
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:target\db</property>
+        <property name="connection.url">jdbc:h2:./target/db</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <property name="hibernate.jdbc.batch_size">50</property>
 
         <property name="hibernate.cache.region.factory_class">com.labs.dm.hamster.cache.HamsterRegionFactory</property>
-        <property name="com.labs.dm.hamster.configurationResourceName">hamster.xml</property>
+        <property name="com.labs.dm.hamster.configurationResourceName">/hamster.xml</property>
         <property name="hibernate.cache.use_second_level_cache">true</property>
         <property name="hibernate.cache.use_query_cache">false</property>
         <property name="hibernate.generate_statistics">true</property>

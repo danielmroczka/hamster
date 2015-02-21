@@ -1,18 +1,14 @@
 package com.labs.dm.hamster.cache;
 
-import java.util.Properties;
 import org.hibernate.cache.CacheException;
-import org.hibernate.cache.spi.CacheDataDescription;
-import org.hibernate.cache.spi.CollectionRegion;
-import org.hibernate.cache.spi.EntityRegion;
-import org.hibernate.cache.spi.NaturalIdRegion;
-import org.hibernate.cache.spi.QueryResultsRegion;
-import org.hibernate.cache.spi.RegionFactory;
-import org.hibernate.cache.spi.TimestampsRegion;
+import org.hibernate.cache.spi.*;
 import org.hibernate.cache.spi.access.AccessType;
 import org.hibernate.cfg.Settings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.util.Properties;
 
 /**
  *
@@ -24,58 +20,64 @@ public class HamsterRegionFactory implements RegionFactory {
 
     @Override
     public void start(Settings settings, Properties properties) throws CacheException {
-        logger.warn("Not supported yet!");
+        if (properties.containsKey(Consts.CONF_KEY)) {
+            File f = new File((String) properties.get(Consts.CONF_KEY));
+            if (!f.exists()) {
+                logger.warn("Missing file: " + properties.get(Consts.CONF_KEY));
+            }
+        }
+        logger.warn("start not supported yet!");
     }
 
     @Override
     public void stop() {
-        logger.warn("Not supported yet!");
+        logger.warn("stop not supported yet!");
     }
 
     @Override
     public boolean isMinimalPutsEnabledByDefault() {
-        logger.warn("Not supported yet!");
+        logger.warn("isMinimalPutsEnabledByDefault not supported yet!");
         return true;
     }
 
     @Override
     public AccessType getDefaultAccessType() {
-        return AccessType.READ_ONLY;
+        return AccessType.READ_WRITE;
     }
 
     @Override
     public long nextTimestamp() {
-        logger.warn("Not supported yet!");
-        return 0;
+        logger.warn("nextTimestamp not supported yet!");
+        return System.currentTimeMillis() + 5000;
     }
 
     @Override
     public EntityRegion buildEntityRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("Not supported yet!");
-        return new HamsterEntityRegion();
+        logger.warn("buildEntityRegion not supported yet!");
+        return new HamsterEntityRegion(regionName);
     }
 
     @Override
     public NaturalIdRegion buildNaturalIdRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("Not supported yet!");
+        logger.warn("buildNaturalIdRegion not supported yet!");
         return null;
     }
 
     @Override
     public CollectionRegion buildCollectionRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("Not supported yet!");
+        logger.warn("buildCollectionRegion not supported yet!");
         return null;
     }
 
     @Override
     public QueryResultsRegion buildQueryResultsRegion(String regionName, Properties properties) throws CacheException {
-        logger.warn("Not supported yet!");
+        logger.warn("buildQueryResultsRegion not supported yet!");
         return null;
     }
 
     @Override
     public TimestampsRegion buildTimestampsRegion(String regionName, Properties properties) throws CacheException {
-        logger.warn("Not supported yet!");
+        logger.warn("buildTimestampsRegion not supported yet!");
         return null;
     }
 
