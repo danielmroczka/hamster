@@ -21,7 +21,7 @@ public class Main {
         System.out.println(s.save(person));
         System.out.println(person.getId());
         s.getTransaction().commit();
-        
+        s.flush();
         System.out.println(s.getStatistics());
         
         s.close();
