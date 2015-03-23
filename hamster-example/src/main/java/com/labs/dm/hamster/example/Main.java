@@ -8,12 +8,11 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 /**
- *
- * @author daniel 
+ * @author daniel
  */
 public class Main {
     private static final SessionFactory sf = HibernateUtil.getSessionFactory();
-    
+
     public static void main(String[] args) {
         Session s = sf.openSession();
         s.getTransaction().begin();
@@ -23,20 +22,20 @@ public class Main {
         s.getTransaction().commit();
         s.flush();
         System.out.println(s.getStatistics());
-        
+
         s.close();
         s = sf.openSession();
 
         s.get(Person.class, person.getId());
-        
+
         List<Person> list = s.createQuery("from Person").list();
         System.out.println(list.size());
         System.out.println(s.getStatistics());
-        
+
         list = s.createQuery("from Person").list();
         System.out.println(list.size());
         System.out.println(s.getStatistics());
-        
+
         s.close();
         sf.close();
     }

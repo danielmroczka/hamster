@@ -4,6 +4,7 @@ package com.labs.dm.hamster.example.helpers;
  *
  * @author daniel
  */
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

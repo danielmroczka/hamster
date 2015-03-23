@@ -10,11 +10,10 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- *
  * @author daniel
  */
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Person implements Serializable {
 
     @Id

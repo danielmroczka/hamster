@@ -1,5 +1,6 @@
 package com.labs.dm.hamster.cache;
 
+import com.labs.dm.hamster.cache.region.*;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.*;
 import org.hibernate.cache.spi.access.AccessType;
@@ -11,7 +12,6 @@ import java.io.File;
 import java.util.Properties;
 
 /**
- *
  * @author daniel
  */
 public class HamsterRegionFactory implements RegionFactory {
@@ -48,6 +48,7 @@ public class HamsterRegionFactory implements RegionFactory {
     @Override
     public long nextTimestamp() {
         logger.warn("nextTimestamp not supported yet!");
+
         return System.currentTimeMillis() + 5000;
     }
 
@@ -60,25 +61,25 @@ public class HamsterRegionFactory implements RegionFactory {
     @Override
     public NaturalIdRegion buildNaturalIdRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
         logger.warn("buildNaturalIdRegion not supported yet!");
-        return null;
+        return new HamsterNaturalIdRegion();
     }
 
     @Override
     public CollectionRegion buildCollectionRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
         logger.warn("buildCollectionRegion not supported yet!");
-        return null;
+        return new HamsterCollectionRegion();
     }
 
     @Override
     public QueryResultsRegion buildQueryResultsRegion(String regionName, Properties properties) throws CacheException {
         logger.warn("buildQueryResultsRegion not supported yet!");
-        return null;
+        return new HamsterQueryResultsRegion();
     }
 
     @Override
     public TimestampsRegion buildTimestampsRegion(String regionName, Properties properties) throws CacheException {
         logger.warn("buildTimestampsRegion not supported yet!");
-        return null;
+        return new HamsterTimestampRegion();
     }
 
 }

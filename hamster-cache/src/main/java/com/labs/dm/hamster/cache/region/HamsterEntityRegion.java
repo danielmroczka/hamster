@@ -1,4 +1,4 @@
-package com.labs.dm.hamster.cache;
+package com.labs.dm.hamster.cache.region;
 
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.CacheDataDescription;
@@ -6,7 +6,6 @@ import org.hibernate.cache.spi.EntityRegion;
 import org.hibernate.cache.spi.access.AccessType;
 import org.hibernate.cache.spi.access.EntityRegionAccessStrategy;
 import org.hibernate.cache.spi.access.SoftLock;
-import org.hibernate.cache.spi.entry.CacheEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * @author daniel
  */
 public class HamsterEntityRegion implements EntityRegion {
@@ -65,7 +63,7 @@ public class HamsterEntityRegion implements EntityRegion {
             @Override
             public Object get(Object key, long txTimestamp) throws CacheException {
                 logger.warn("get not supported yet!");
-                return new CacheEntry() {
+                /*return new CacheEntry() {
 
                     @Override
                     public boolean isReferenceEntry() {
@@ -74,7 +72,7 @@ public class HamsterEntityRegion implements EntityRegion {
 
                     @Override
                     public String getSubclass() {
-                        return "";
+                        return "com.labs.dm.hamster.example.domain.Person";
                     }
 
                     @Override
@@ -89,8 +87,11 @@ public class HamsterEntityRegion implements EntityRegion {
 
                     @Override
                     public Serializable[] getDisassembledState() {
-                        return new Serializable[0];
+                        return new Serializable[1];
                     }
+                };*/
+
+                return new Serializable() {
                 };
             }
 
