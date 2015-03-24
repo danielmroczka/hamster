@@ -1,14 +1,14 @@
 # hamster
-Pure Read-Only implementation of hibernate cache (Project in an early stage of software development)
+Pure read-only implementation of hibernate 2nd level cache (project in an early stage of software development)
 
 [![Build Status](https://travis-ci.org/danielmroczka/hamster.png?branch=master)](https://travis-ci.org/danielmroczka/hamster)
 [![Coverage Status](https://coveralls.io/repos/danielmroczka/hamster/badge.png?branch=master)](https://coveralls.io/r/danielmroczka/hamster?branch=master)
 
-Pure Hibernate 2nd level cache using HashMap
+Pure Hibernate 2nd level cache using HashMap. 
 
 ## Features
 
-* Implement "read-only" strategies
+* Implement "read-only" strategies 
 
 ## Build
 
