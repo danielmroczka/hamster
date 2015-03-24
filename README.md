@@ -20,13 +20,14 @@ $ cd hamster
 $ mvn install
 ```
 
+## Usage
 Maven:
 
 ```xml
 <dependency>
-	<groupId>com.labs.dm</groupId>
-  	<artifactId>hamster-cache</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <groupId>com.labs.dm</groupId>
+    <artifactId>hamster-cache</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
