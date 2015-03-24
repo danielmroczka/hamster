@@ -25,14 +25,14 @@ Maven:
 ```xml
 <dependency>
 	<groupId>com.labs.dm</groupId>
-  <artifactId>hamster-cache</artifactId>
-	<version>0.1</version>
+  	<artifactId>hamster-cache</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
 Hibernate configuration
 
 ```xml
-        <property name="hibernate.cache.region.factory_class">com.labs.dm.hamster.cache.HamsterRegionFactory</property>
-        <property name="com.labs.dm.hamster.configurationResourceName">/hamster.xml</property>
+<property name="hibernate.cache.region.factory_class">com.labs.dm.hamster.cache.HamsterRegionFactory</property>
+<property name="com.labs.dm.hamster.configurationResourceName">/hamster.xml</property>
 ```
