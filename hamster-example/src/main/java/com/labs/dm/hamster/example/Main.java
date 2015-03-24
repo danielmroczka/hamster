@@ -35,7 +35,7 @@ public class Main {
         list = s.createQuery("from Person").list();
         System.out.println(list.size());
         System.out.println(s.getStatistics());
-
+        s.get(Person.class, person.getId());
         s.close();
         sf.close();
     }
