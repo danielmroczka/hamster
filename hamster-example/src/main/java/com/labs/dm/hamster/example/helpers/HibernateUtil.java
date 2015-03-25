@@ -1,7 +1,6 @@
 package com.labs.dm.hamster.example.helpers;
 
 /**
- *
  * @author daniel
  */
 

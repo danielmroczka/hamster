@@ -1,85 +1,76 @@
-package com.labs.dm.hamster.cache.strategy;
+package com.labs.dm.hamster.cache.strategies;
 
 import com.labs.dm.hamster.cache.region.HamsterEntityRegion;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.EntityRegion;
 import org.hibernate.cache.spi.access.EntityRegionAccessStrategy;
-import org.hibernate.cache.spi.access.RegionAccessStrategy;
 import org.hibernate.cache.spi.access.SoftLock;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Created by daniel on 2015-03-24.
+ * Created by daniel on 2015-03-25.
  */
-public class CommonEntityNonstrictRegionAccessStrategy implements RegionAccessStrategy, EntityRegionAccessStrategy {
+public class ReadOnlyEntityRegionAccessStrategy implements EntityRegionAccessStrategy {
 
-    private final HamsterEntityRegion region;
-    private Map<Object, Object> map = new HashMap();
+    private HamsterEntityRegion entityRegion;
 
-    public CommonEntityNonstrictRegionAccessStrategy(HamsterEntityRegion region) {
-        this.region = region;
-
+    public ReadOnlyEntityRegionAccessStrategy(HamsterEntityRegion entityRegion) {
+        this.entityRegion = entityRegion;
     }
-
 
     @Override
     public EntityRegion getRegion() {
-        return region;
+        return entityRegion;
     }
 
     @Override
     public boolean insert(Object key, Object value, Object version) throws CacheException {
-        map.put(key, value);
+        entityRegion.put(key, value);
         return true;
     }
 
     @Override
     public boolean afterInsert(Object key, Object value, Object version) throws CacheException {
-        return false;
+        entityRegion.put(key, value);
+        return true;
     }
 
     @Override
     public boolean update(Object key, Object value, Object currentVersion, Object previousVersion) throws CacheException {
-        return false;
+        entityRegion.put(key, value);
+        return true;
     }
 
     @Override
     public boolean afterUpdate(Object key, Object value, Object currentVersion, Object previousVersion, SoftLock lock) throws CacheException {
-        return false;
+        entityRegion.put(key, value);
+        return true;
     }
 
     @Override
     public Object get(Object key, long txTimestamp) throws CacheException {
-        return map.get(key);
+        return entityRegion.get(key);
     }
 
     @Override
     public boolean putFromLoad(Object key, Object value, long txTimestamp, Object version) throws CacheException {
-        map.put(key, value);
+        entityRegion.put(key, value);
         return true;
     }
 
     @Override
     public boolean putFromLoad(Object key, Object value, long txTimestamp, Object version, boolean minimalPutOverride) throws CacheException {
-        map.put(key, value);
+        entityRegion.put(key, value);
         return true;
     }
 
     @Override
     public SoftLock lockItem(Object key, Object version) throws CacheException {
-        return new SoftLock() {
-
-        };
+        return null;
     }
 
     @Override
     public SoftLock lockRegion() throws CacheException {
-        return new SoftLock() {
-
-        };
-
+        return null;
     }
 
     @Override
@@ -111,5 +102,4 @@ public class CommonEntityNonstrictRegionAccessStrategy implements RegionAccessSt
     public void evictAll() throws CacheException {
 
     }
-
 }

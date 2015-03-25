@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author daniel
  */
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Person implements Serializable {
 
     @Id

@@ -42,7 +42,7 @@ public class HamsterRegionFactory implements RegionFactory {
 
     @Override
     public AccessType getDefaultAccessType() {
-        return AccessType.READ_WRITE;
+        return AccessType.READ_ONLY;
     }
 
     @Override
@@ -54,32 +54,27 @@ public class HamsterRegionFactory implements RegionFactory {
 
     @Override
     public EntityRegion buildEntityRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("buildEntityRegion not supported yet!");
-        return new HamsterEntityRegion(regionName);
+        return new HamsterEntityRegion(regionName, properties, metadata);
     }
 
     @Override
     public NaturalIdRegion buildNaturalIdRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("buildNaturalIdRegion not supported yet!");
-        return new HamsterNaturalIdRegion();
+        return new HamsterNaturalIdRegion(regionName, properties, metadata);
     }
 
     @Override
     public CollectionRegion buildCollectionRegion(String regionName, Properties properties, CacheDataDescription metadata) throws CacheException {
-        logger.warn("buildCollectionRegion not supported yet!");
-        return new HamsterCollectionRegion();
+        return new HamsterCollectionRegion(regionName, properties, metadata);
     }
 
     @Override
     public QueryResultsRegion buildQueryResultsRegion(String regionName, Properties properties) throws CacheException {
-        logger.warn("buildQueryResultsRegion not supported yet!");
-        return new HamsterQueryResultsRegion();
+        return new HamsterQueryResultsRegion(regionName, null, properties);
     }
 
     @Override
     public TimestampsRegion buildTimestampsRegion(String regionName, Properties properties) throws CacheException {
-        logger.warn("buildTimestampsRegion not supported yet!");
-        return new HamsterTimestampRegion();
+        return new HamsterTimestampRegion(regionName, null, properties);
     }
 
 }

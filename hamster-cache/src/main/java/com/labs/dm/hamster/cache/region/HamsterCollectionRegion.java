@@ -6,16 +6,22 @@ import org.hibernate.cache.spi.CollectionRegion;
 import org.hibernate.cache.spi.access.AccessType;
 import org.hibernate.cache.spi.access.CollectionRegionAccessStrategy;
 
-import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by daniel on 2015-03-23.
  */
-public class HamsterCollectionRegion implements CollectionRegion {
+public class HamsterCollectionRegion extends GeneralDataHamsterRegion implements CollectionRegion {
+
+    public HamsterCollectionRegion(String regionName, Properties properties, CacheDataDescription metadata) {
+        super(regionName, metadata, properties);
+    }
+
     @Override
     public CollectionRegionAccessStrategy buildAccessStrategy(AccessType accessType) throws CacheException {
         return null;
     }
+
 
     @Override
     public boolean isTransactionAware() {
@@ -25,50 +31,5 @@ public class HamsterCollectionRegion implements CollectionRegion {
     @Override
     public CacheDataDescription getCacheDataDescription() {
         return null;
-    }
-
-    @Override
-    public String getName() {
-        return null;
-    }
-
-    @Override
-    public void destroy() throws CacheException {
-
-    }
-
-    @Override
-    public boolean contains(Object key) {
-        return false;
-    }
-
-    @Override
-    public long getSizeInMemory() {
-        return 0;
-    }
-
-    @Override
-    public long getElementCountInMemory() {
-        return 0;
-    }
-
-    @Override
-    public long getElementCountOnDisk() {
-        return 0;
-    }
-
-    @Override
-    public Map toMap() {
-        return null;
-    }
-
-    @Override
-    public long nextTimestamp() {
-        return 0;
-    }
-
-    @Override
-    public int getTimeout() {
-        return 0;
     }
 }
