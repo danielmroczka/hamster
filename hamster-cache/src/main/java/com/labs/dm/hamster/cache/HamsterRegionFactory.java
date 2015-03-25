@@ -26,17 +26,16 @@ public class HamsterRegionFactory implements RegionFactory {
                 logger.warn("Missing file: " + properties.get(Consts.CONF_KEY));
             }
         }
-        logger.warn("start not supported yet!");
+        logger.info("HamsterRegionFactory start");
     }
 
     @Override
     public void stop() {
-        logger.warn("stop not supported yet!");
+        logger.info("HamsterRegionFactory stop");
     }
 
     @Override
     public boolean isMinimalPutsEnabledByDefault() {
-        logger.warn("isMinimalPutsEnabledByDefault not supported yet!");
         return true;
     }
 
@@ -69,12 +68,12 @@ public class HamsterRegionFactory implements RegionFactory {
 
     @Override
     public QueryResultsRegion buildQueryResultsRegion(String regionName, Properties properties) throws CacheException {
-        return new HamsterQueryResultsRegion(regionName, null, properties);
+        return new HamsterQueryResultsRegion(regionName, properties);
     }
 
     @Override
     public TimestampsRegion buildTimestampsRegion(String regionName, Properties properties) throws CacheException {
-        return new HamsterTimestampRegion(regionName, null, properties);
+        return new HamsterTimestampRegion(regionName, properties);
     }
 
 }

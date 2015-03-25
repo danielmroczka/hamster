@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Session s = null;
+        Session s;
         try {
             s = sf.openSession();
             List<Person> list = s.createQuery("from Person").list();

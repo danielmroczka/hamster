@@ -1,4 +1,4 @@
-package com.labs.dm.hamster.cache.strategies;
+package com.labs.dm.hamster.cache.strategy;
 
 import com.labs.dm.hamster.cache.region.HamsterEntityRegion;
 import org.hibernate.cache.CacheException;
@@ -24,8 +24,7 @@ public class ReadOnlyEntityRegionAccessStrategy implements EntityRegionAccessStr
 
     @Override
     public boolean insert(Object key, Object value, Object version) throws CacheException {
-        entityRegion.put(key, value);
-        return true;
+        return false;
     }
 
     @Override
@@ -36,14 +35,12 @@ public class ReadOnlyEntityRegionAccessStrategy implements EntityRegionAccessStr
 
     @Override
     public boolean update(Object key, Object value, Object currentVersion, Object previousVersion) throws CacheException {
-        entityRegion.put(key, value);
-        return true;
+        throw new UnsupportedOperationException("Can't write to a readonly object");
     }
 
     @Override
     public boolean afterUpdate(Object key, Object value, Object currentVersion, Object previousVersion, SoftLock lock) throws CacheException {
-        entityRegion.put(key, value);
-        return true;
+        throw new UnsupportedOperationException("Can't write to a readonly object");
     }
 
     @Override
@@ -75,7 +72,7 @@ public class ReadOnlyEntityRegionAccessStrategy implements EntityRegionAccessStr
 
     @Override
     public void unlockItem(Object key, SoftLock lock) throws CacheException {
-
+        evict(key);
     }
 
     @Override

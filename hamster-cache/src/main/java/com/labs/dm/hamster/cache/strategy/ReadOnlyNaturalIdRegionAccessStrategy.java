@@ -1,4 +1,4 @@
-package com.labs.dm.hamster.cache.strategies;
+package com.labs.dm.hamster.cache.strategy;
 
 import com.labs.dm.hamster.cache.region.HamsterNaturalIdRegion;
 import org.hibernate.cache.CacheException;
@@ -24,8 +24,8 @@ public class ReadOnlyNaturalIdRegionAccessStrategy implements NaturalIdRegionAcc
 
     @Override
     public boolean insert(Object key, Object value) throws CacheException {
-        hamsterNaturalIdRegion.put(key, value);
-        return true;
+
+        return false;
     }
 
     @Override
@@ -36,14 +36,12 @@ public class ReadOnlyNaturalIdRegionAccessStrategy implements NaturalIdRegionAcc
 
     @Override
     public boolean update(Object key, Object value) throws CacheException {
-        hamsterNaturalIdRegion.put(key, value);
-        return true;
+        throw new UnsupportedOperationException("Can't write to a readonly object");
     }
 
     @Override
     public boolean afterUpdate(Object key, Object value, SoftLock lock) throws CacheException {
-        hamsterNaturalIdRegion.put(key, value);
-        return true;
+        throw new UnsupportedOperationException("Can't write to a readonly object");
     }
 
     @Override
@@ -75,7 +73,7 @@ public class ReadOnlyNaturalIdRegionAccessStrategy implements NaturalIdRegionAcc
 
     @Override
     public void unlockItem(Object key, SoftLock lock) throws CacheException {
-
+        //hamsterNaturalIdRegion.remove(key);
     }
 
     @Override

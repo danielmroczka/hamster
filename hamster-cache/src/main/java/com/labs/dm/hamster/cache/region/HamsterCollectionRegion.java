@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * Created by daniel on 2015-03-23.
  */
-public class HamsterCollectionRegion extends GeneralDataHamsterRegion implements CollectionRegion {
+public class HamsterCollectionRegion extends HamsterGeneralDataRegion implements CollectionRegion {
 
     public HamsterCollectionRegion(String regionName, Properties properties, CacheDataDescription metadata) {
         super(regionName, metadata, properties);

@@ -1,7 +1,7 @@
 package com.labs.dm.hamster.cache.region;
 
-import com.labs.dm.hamster.cache.strategies.NonStrictReadWriteEntityRegionAccessStrategy;
-import com.labs.dm.hamster.cache.strategies.ReadOnlyEntityRegionAccessStrategy;
+import com.labs.dm.hamster.cache.strategy.NonStrictReadWriteEntityRegionAccessStrategy;
+import com.labs.dm.hamster.cache.strategy.ReadOnlyEntityRegionAccessStrategy;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.CacheDataDescription;
 import org.hibernate.cache.spi.EntityRegion;
@@ -15,7 +15,7 @@ import java.util.Properties;
 /**
  * @author daniel
  */
-public class HamsterEntityRegion extends GeneralDataHamsterRegion implements EntityRegion {
+public class HamsterEntityRegion extends HamsterGeneralDataRegion implements EntityRegion {
 
     private final static Logger logger = LoggerFactory.getLogger(HamsterEntityRegion.class);
 

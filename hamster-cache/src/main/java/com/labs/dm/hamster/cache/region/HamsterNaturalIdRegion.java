@@ -1,7 +1,7 @@
 package com.labs.dm.hamster.cache.region;
 
-import com.labs.dm.hamster.cache.strategies.NonStrictReadWriteNaturalIdRegionAccessStrategy;
-import com.labs.dm.hamster.cache.strategies.ReadOnlyNaturalIdRegionAccessStrategy;
+import com.labs.dm.hamster.cache.strategy.NonStrictReadWriteNaturalIdRegionAccessStrategy;
+import com.labs.dm.hamster.cache.strategy.ReadOnlyNaturalIdRegionAccessStrategy;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.CacheDataDescription;
 import org.hibernate.cache.spi.NaturalIdRegion;
@@ -13,7 +13,7 @@ import java.util.Properties;
 /**
  * Created by daniel on 2015-03-23.
  */
-public class HamsterNaturalIdRegion extends GeneralDataHamsterRegion implements NaturalIdRegion {
+public class HamsterNaturalIdRegion extends HamsterGeneralDataRegion implements NaturalIdRegion {
 
 
     public HamsterNaturalIdRegion(String regionName, Properties properties, CacheDataDescription metadata) {

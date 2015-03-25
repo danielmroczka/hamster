@@ -11,29 +11,32 @@ import java.util.Properties;
 /**
  * Created by daniel on 2015-03-25.
  */
-public class GeneralDataHamsterRegion implements GeneralDataRegion {
+public abstract class HamsterGeneralDataRegion extends HamsterDataRegion implements GeneralDataRegion {
 
     protected CacheDataDescription metadata;
     private String regionName;
     private Properties properties;
     private Map<Object, Object> map = new HashMap<>();
 
-    public GeneralDataHamsterRegion(String regionName, CacheDataDescription metadata, Properties properties) {
+    public HamsterGeneralDataRegion(String regionName, CacheDataDescription metadata, Properties properties) {
         this.regionName = regionName;
         this.metadata = metadata;
         this.properties = properties;
     }
 
     @Override
-    public Object get(Object o) throws CacheException {
-        Object result = map.get(o);
+    public Object get(Object key) throws CacheException {
+        if (key == null) {
+            return null;
+        }
+        Object result = map.get(key);
         System.out.println(result);
         return result;
     }
 
     @Override
-    public void put(Object o, Object o1) throws CacheException {
-        map.put(o, o1);
+    public void put(Object key, Object value) throws CacheException {
+        map.put(key, value);
     }
 
     @Override
