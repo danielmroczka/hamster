@@ -1,5 +1,6 @@
 package com.labs.dm.hamster.cache.region;
 
+import com.labs.dm.hamster.cache.strategies.NonStrictReadWriteNaturalIdRegionAccessStrategy;
 import com.labs.dm.hamster.cache.strategies.ReadOnlyNaturalIdRegionAccessStrategy;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.CacheDataDescription;
@@ -25,7 +26,7 @@ public class HamsterNaturalIdRegion extends GeneralDataHamsterRegion implements 
             case READ_ONLY:
                 return new ReadOnlyNaturalIdRegionAccessStrategy(this);
             case READ_WRITE:
-                return new ReadOnlyNaturalIdRegionAccessStrategy(this);
+                return new NonStrictReadWriteNaturalIdRegionAccessStrategy(this);
             default:
                 throw new CacheException("Unsupported access strategy : " + accessType + ".");
         }

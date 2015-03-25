@@ -1,5 +1,6 @@
 package com.labs.dm.hamster.cache.region;
 
+import com.labs.dm.hamster.cache.strategies.NonStrictReadWriteEntityRegionAccessStrategy;
 import com.labs.dm.hamster.cache.strategies.ReadOnlyEntityRegionAccessStrategy;
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.CacheDataDescription;
@@ -28,7 +29,7 @@ public class HamsterEntityRegion extends GeneralDataHamsterRegion implements Ent
             case READ_ONLY:
                 return new ReadOnlyEntityRegionAccessStrategy(this);
             case NONSTRICT_READ_WRITE:
-                return new ReadOnlyEntityRegionAccessStrategy(this);
+                return new NonStrictReadWriteEntityRegionAccessStrategy(this);
             default:
                 throw new CacheException("Unsupported access strategy : " + accessType + ".");
         }

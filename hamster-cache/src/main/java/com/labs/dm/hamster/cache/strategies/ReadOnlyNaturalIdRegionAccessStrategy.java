@@ -85,7 +85,7 @@ public class ReadOnlyNaturalIdRegionAccessStrategy implements NaturalIdRegionAcc
 
     @Override
     public void remove(Object key) throws CacheException {
-
+        hamsterNaturalIdRegion.evict(key);
     }
 
     @Override
@@ -96,7 +96,6 @@ public class ReadOnlyNaturalIdRegionAccessStrategy implements NaturalIdRegionAcc
     @Override
     public void evict(Object key) throws CacheException {
         hamsterNaturalIdRegion.evict(key);
-
     }
 
     @Override

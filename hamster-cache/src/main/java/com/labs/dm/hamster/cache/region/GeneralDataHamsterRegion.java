@@ -26,7 +26,9 @@ public class GeneralDataHamsterRegion implements GeneralDataRegion {
 
     @Override
     public Object get(Object o) throws CacheException {
-        return map.get(o);
+        Object result = map.get(o);
+        System.out.println(result);
+        return result;
     }
 
     @Override

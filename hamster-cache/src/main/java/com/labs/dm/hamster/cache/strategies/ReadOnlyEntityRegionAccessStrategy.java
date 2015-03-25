@@ -85,21 +85,21 @@ public class ReadOnlyEntityRegionAccessStrategy implements EntityRegionAccessStr
 
     @Override
     public void remove(Object key) throws CacheException {
-
+        entityRegion.evict(key);
     }
 
     @Override
     public void removeAll() throws CacheException {
-
+        evictAll();
     }
 
     @Override
     public void evict(Object key) throws CacheException {
-
+        entityRegion.evict(key);
     }
 
     @Override
     public void evictAll() throws CacheException {
-
+        entityRegion.evictAll();
     }
 }
